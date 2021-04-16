@@ -7,13 +7,22 @@ import java.util.List;
 
 public class Banco {
 
-    List<Professor> listaProfessores = new LinkedList<Professor>();
-    List<Aluno> listaAlunos = new LinkedList<Aluno>();
-    List<Materia> listMaterias = new ArrayList<Materia>();
-
     private static Integer chaveSequencialProfessor = 1;
     private static Integer chaveSequencialAluno = 1;
     private static Integer chaveSequencialMateria = 1;
+
+    private Usuario admin;
+    private List<Professor> listaProfessores = new LinkedList<Professor>();
+    private List<Aluno> listaAlunos = new LinkedList<Aluno>();
+    private List<Materia> listMaterias = new ArrayList<Materia>();
+    private List<Usuario> listLogin = new LinkedList<>();
+
+
+
+    private void adminLogin(){
+        admin.setLogin("admin");
+        admin.setSenha("admin");
+    }
 
     public void adicionaProfessor(Professor professor) {
         professor.setId(Banco.chaveSequencialProfessor++);
