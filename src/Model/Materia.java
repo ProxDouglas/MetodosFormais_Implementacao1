@@ -8,13 +8,13 @@ public class Materia {
     String periodo;
     int cargaHoraria;
     String cursoquePertence;
-    Date dataCriação;
+    String dataCriação;
     int id;
     //List<Pessoa> listAlunos;
     //cargaHorairia >= 20h
     //pk: id
 
-    Materia(String nome, String periodo, int cargaHoraria, String cursoquePertence, Date dataCriacao){
+    public Materia(String nome, int periodo, int cargaHoraria, String cursoquePertence, String dataCriacao){
         setNome(nome);
         setPeriodo(periodo);
         setCargaHoraria(cargaHoraria);
@@ -34,15 +34,15 @@ public class Materia {
 
     public void setCargaHoraria(int cargaHoraria) { this.cargaHoraria = cargaHoraria; }
 
-    public String getCursoquePertence() { return cursoquePertence; }
+    public String getDataCriação() { return dataCriação; }
 
-    public void setCursoquePertence(String cursoquePertence) { this.cursoquePertence = cursoquePertence; }
-
-    public Date getDataCriação() { return dataCriação; }
-
-    public void setDataCriação(Date dataCriação) { this.dataCriação = dataCriação; }
+    public void setDataCriação(String dataCriação) { this.dataCriação = dataCriação; }
 
     public int getId() { return id; }
 
     public void setId(int id) { this.id = id; }
+
+    public String getCursoquePertence() {return cursoquePertence; }
+
+    public void setCursoquePertence(String cursoquePertence) {this.cursoquePertence = cursoquePertence; }
 }

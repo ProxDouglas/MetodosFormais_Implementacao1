@@ -24,6 +24,10 @@ public class Banco {
         admin.setSenha("admin");
     }
 
+    public boolean loginAdmin(Usuario admin){
+        return this.admin.equals(admin);
+    }
+
     public void adicionaProfessor(Professor professor) {
         professor.setId(Banco.chaveSequencialProfessor++);
         this.listaProfessores.add(professor);

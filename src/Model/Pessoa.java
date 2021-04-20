@@ -16,7 +16,7 @@ public class Pessoa {
 
     //constructor com tipo Date
     Pessoa(String nome, Date dataNasc, char sexo, String documento,
-           String email, Date dataCadastro, int id){
+           String email, Date dataCadastro){
         setNome(nome);
         setDataNasc(dataNasc);
         setSexo(sexo);
@@ -29,7 +29,7 @@ public class Pessoa {
 
     //constructor para string
     Pessoa(String nome, String dataNasc, char sexo, String documento,
-           String email, String dataCadastro, int id){
+           String email, String dataCadastro){
         setNome(nome);
         setDataNasc(formatDate(dataNasc));
         setSexo(sexo);

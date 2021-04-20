@@ -1,14 +1,15 @@
 package Controller;
 
 import Model.Categoria;
+import View.AdicionarInterface;
 
 public class Service {
+    Cadastro cadastro = new Cadastro();
 
     public void service(Categoria categoria){
         String acao = null;
 
         if(categoria == Categoria.ADMINISTRADOR){
-            //acao =
             serviceAdmin(acao);
         }if(categoria == Categoria.PROFESSOR){
 
@@ -20,9 +21,18 @@ public class Service {
     }
 
     private void serviceAdmin(String acao){
+        //login
+
 
         if(acao.equals("adicionar")){
             // formulario com categoria
+
+            AdicionarInterface test = new AdicionarInterface(this.cadastro);
+
+            test.alunoADD();
+            test.professorADD();
+            test.matériaADD();
+
 
         }if(acao.equals("alterar")) {
             //perguntar categoria
