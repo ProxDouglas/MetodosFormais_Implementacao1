@@ -1,11 +1,8 @@
 package Model;
 
-import java.sql.Date;
-import java.util.List;
-
 public class Materia {
     String nome;
-    String periodo;
+    int periodo;
     int cargaHoraria;
     String cursoquePertence;
     String dataCriação;
@@ -26,9 +23,9 @@ public class Materia {
 
     public void setNome(String nome) { this.nome = nome; }
 
-    public String getPeriodo() { return periodo; }
+    public int getPeriodo() { return periodo; }
 
-    public void setPeriodo(String periodo) { this.periodo = periodo; }
+    public void setPeriodo(int periodo) { this.periodo = periodo; }
 
     public int getCargaHoraria() { return cargaHoraria; }
 

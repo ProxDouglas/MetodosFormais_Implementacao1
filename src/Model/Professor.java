@@ -6,7 +6,7 @@ public class Professor extends Pessoa{
     private Materia materia;
     private String rp;
 
-    Professor(String nome, Date dataNasc, char sexo, String documento, String email, Date dataCadastro, int id) {
+    Professor(String nome, String dataNasc, char sexo, String documento, String email, String dataCadastro, int id) {
         super(nome, dataNasc, sexo, documento, email, dataCadastro);
     }
 

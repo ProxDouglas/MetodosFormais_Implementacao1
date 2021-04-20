@@ -17,29 +17,26 @@ public class Banco {
     private List<Materia> listMaterias = new ArrayList<Materia>();
     private List<Usuario> listLogin = new LinkedList<>();
 
-
-
-    private void adminLogin(){
-        admin.setLogin("admin");
-        admin.setSenha("admin");
+    public Banco(){
+        this.admin = new Usuario("admin", "admin");
     }
 
-    public boolean loginAdmin(String user, String pass){
-        Usuario admin = new Usuario();
-        admin.setLogin(user);
-        admin.setSenha(pass);
 
+
+    public boolean loginAdmin(Usuario admin){
         return admin.ehIgual(admin.getLogin(), admin.getSenha());
     }
 
     public void adicionaProfessor(Professor professor) {
         professor.setId(Banco.chaveSequencialProfessor++);
         this.listaProfessores.add(professor);
+        adicionarLoginProf(professor);
     }
 
     public void adicionaAluno(Aluno aluno) {
         aluno.setId(Banco.chaveSequencialAluno++);
         this.listaAlunos.add(aluno);
+        adicionarLoginAlu(aluno);
     }
 
     public void adicionaMateria(Materia materia) {
@@ -113,6 +110,16 @@ public class Banco {
             materia =  listMaterias.get(i);
         }
         return materia;
+    }
+
+    private void adicionarLoginProf(Professor professor){
+        Usuario usuario = new Usuario(Integer.toString(professor.getId()), professor.getDocumento());
+        this.listLogin.add(usuario);
+    }
+
+    private void adicionarLoginAlu(Aluno aluno){
+        Usuario usuario = new Usuario(Integer.toString(aluno.getId()), aluno.getDocumento());
+        this.listLogin.add(usuario);
     }
 
 }

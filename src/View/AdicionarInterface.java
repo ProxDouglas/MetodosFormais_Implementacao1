@@ -14,19 +14,12 @@ public class AdicionarInterface {
 
 
     public void alunoADD(){
-        String nome = "Ste";
-        String dataNasc = "10/09/2002";
-        char sexo = 'F';
-        String documento = "999999999";
-        String email = "ste@data.com";
-        String dataCadastro = "10/04/2021";
-        int id = 1;
 
-        Aluno aluno1 = new Aluno("Ste", "10/09/2002", 'F',
-                "999999999", "ste@data.com", "10/04/2021");
+        Aluno aluno1 = new Aluno("Ste", "05/04/2021", 'F',
+                "999999999", "ste@data.com", "05/04/2021");
 
-        Aluno aluno2 = new Aluno("Tata", "10/09/2002", 'F',
-                "999999999", "ste@data.com", "10/04/2021");
+        Aluno aluno2 = new Aluno("Tata", "05/04/2021", 'F',
+                "999999999", "ste@data.com", "05/04/2021");
 
         cadastro.cadastrarAluno(aluno1);
         cadastro.cadastrarAluno(aluno2);
@@ -35,11 +28,11 @@ public class AdicionarInterface {
 
     public void professorADD(){
 
-        Aluno professor1 = new Aluno("Bren", "10/09/2000",
-                'M', "999999999", "@data.com", "10/04/2021");
+        Aluno professor1 = new Aluno("Bren", "05/04/2021",
+                'M', "999999999", "@data.com", "05/04/2021");
 
-        Aluno professor2 = new Aluno("joao", "10/09/2000",
-                'M', "999999999", "@data.com", "10/04/2021");
+        Aluno professor2 = new Aluno("joao", "05/04/2021",
+                'M', "999999999", "@data.com", "05/04/2021");
 
         cadastro.cadastrarAluno(professor1);
         cadastro.cadastrarAluno(professor2);

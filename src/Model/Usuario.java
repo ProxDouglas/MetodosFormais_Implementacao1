@@ -5,6 +5,11 @@ public class Usuario {
     private String login;
     private String senha;
 
+    public Usuario(String login, String senha){
+        setLogin(login);
+        setSenha(senha);
+    }
+
     public String getLogin() {
         return login;
     }

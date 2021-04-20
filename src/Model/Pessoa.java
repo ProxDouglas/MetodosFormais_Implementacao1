@@ -3,20 +3,36 @@ package Model;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class Pessoa {
     private String nome;
-    private Date dataNasc;
+    private String dataNasc;
     private char sexo;
     private String documento;
     private String email;
-    private Date dataCadastro;
+    private String dataCadastro;
     int id;
     //pk:documento
 
     //constructor com tipo Date
-    Pessoa(String nome, Date dataNasc, char sexo, String documento,
+    /*Pessoa(String nome, Date dataNasc, char sexo, String documento,
            String email, Date dataCadastro){
+        setNome(nome);
+        setDataNasc(dataNasc);
+        setSexo(sexo);
+        setDocumento(documento);
+        setEmail(email);
+        setDataCadastro(dataCadastro);
+        setId(id);
+    }*/
+
+
+    //constructor para string
+    Pessoa(String nome, String dataNasc, char sexo, String documento,
+           String email, String dataCadastro){
         setNome(nome);
         setDataNasc(dataNasc);
         setSexo(sexo);
@@ -26,38 +42,24 @@ public class Pessoa {
         setId(id);
     }
 
-
-    //constructor para string
-    Pessoa(String nome, String dataNasc, char sexo, String documento,
-           String email, String dataCadastro){
-        setNome(nome);
-        setDataNasc(formatDate(dataNasc));
-        setSexo(sexo);
-        setDocumento(documento);
-        setEmail(email);
-        setDataCadastro(formatDate(dataCadastro));
-        setId(id);
-    }
-
-    private Date formatDate(String dataRecebida) {
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        Date dataFormatada = null;
+    /*private Date formatDate(String dataRecebida) {
+        SimpleDateFormat dataFormatada = null;
         try {
-            dataFormatada = (Date) formato.parse(dataRecebida);
+            SimpleDateFormat  = new SimpleDateFormat("dd/MM/yyyy").parse(dataRecebida);
         } catch (ParseException e) {
             e.printStackTrace();
         }
         return dataFormatada;
-    }
+    }*/
 
     //getter e setter
     public String getNome() { return nome; }
 
     public void setNome(String nome) { this.nome = nome; }
 
-    public Date getDataNasc() { return dataNasc; }
+    public String getDataNasc() { return dataNasc; }
 
-    public void setDataNasc(Date dataNasc) { this.dataNasc = dataNasc; }
+    public void setDataNasc(String dataNasc) { this.dataNasc = dataNasc; }
 
     public char getSexo() { return sexo; }
 
@@ -71,9 +73,9 @@ public class Pessoa {
 
     public void setEmail(String email) { this.email = email; }
 
-    public Date getDataCadastro() { return dataCadastro; }
+    public String getDataCadastro() { return dataCadastro; }
 
-    public void setDataCadastro(Date dataCadastro) { this.dataCadastro = dataCadastro; }
+    public void setDataCadastro(String dataCadastro) { this.dataCadastro = dataCadastro; }
 
     public void setId(int id) {this.id = id;}
 

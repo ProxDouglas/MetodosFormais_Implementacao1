@@ -46,4 +46,5 @@ public class Cadastro {
         return banco.buscarMateriaNome(nome);
     }
 
+    public Banco getBanco() { return banco; }
 }

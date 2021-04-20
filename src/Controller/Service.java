@@ -1,19 +1,21 @@
 package Controller;
 
 import Model.Categoria;
+import View.Login;
 import View.AdicionarInterface;
 
 public class Service {
     Cadastro cadastro = new Cadastro();
 
     public void service(Categoria categoria){
-        String acao = null;
+        String acao = "null";
 
         if(categoria == Categoria.ADMINISTRADOR){
             //1)Login
             Login login = new Login();
-            login.realizarLoginAdmin();
+            login.realizarLoginAdmin(this.cadastro);
             //2)Ação (caso login seja um sucesso)
+            acao = "adicionar";
             serviceAdmin(acao);
         }if(categoria == Categoria.PROFESSOR){
 
