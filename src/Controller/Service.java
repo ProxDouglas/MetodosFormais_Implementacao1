@@ -10,6 +10,10 @@ public class Service {
         String acao = null;
 
         if(categoria == Categoria.ADMINISTRADOR){
+            //1)Login
+            Login login = new Login();
+            login.realizarLoginAdmin();
+            //2)Ação (caso login seja um sucesso)
             serviceAdmin(acao);
         }if(categoria == Categoria.PROFESSOR){
 
