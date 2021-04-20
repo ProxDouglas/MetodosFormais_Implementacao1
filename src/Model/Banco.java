@@ -24,8 +24,12 @@ public class Banco {
         admin.setSenha("admin");
     }
 
-    public boolean loginAdmin(Usuario admin){
-        return this.admin.equals(admin);
+    public boolean loginAdmin(String user, String pass){
+        Usuario admin = new Usuario();
+        admin.setLogin(user);
+        admin.setSenha(pass);
+
+        return admin.ehIgual(admin.getLogin(), admin.getSenha());
     }
 
     public void adicionaProfessor(Professor professor) {
