@@ -2,24 +2,22 @@ package View;
 
 
 import Controller.Cadastro;
-import Model.Banco;
+import Model.Categoria;
 import Model.Usuario;
 
-import java.util.Scanner;
-
 public class Login {
-    public boolean realizarLoginAdmin(Cadastro cadastro){
-        Banco banco = cadastro.getBanco();
-        Usuario usuario ;
-        Scanner keyboard = new Scanner (System.in);
+    public boolean realizarLoginAdmin(Cadastro cadastro) {
+        Usuario usuario = new Usuario("admin", "admin", Categoria.ADMINISTRADOR);
+        return cadastro.getBanco().loginAdmin(usuario);
+    }
 
-        //String inpUser = keyboard.nextLine();
-        //String inpPass = keyboard.nextLine();
+    public boolean realizarLoginProfessor(Cadastro cadastro) {
+        Usuario usuario = new Usuario("Bren", "999999999", Categoria.PROFESSOR);
+        return cadastro.getBanco().login(usuario);
+    }
 
-        //usuario = new Usuario(inpUser, inpPass);
-        usuario = new Usuario("admin", "admin");
-
-        boolean resultado = banco.loginAdmin(usuario);
-        return resultado;
+    public boolean realizarLoginAluno(Cadastro cadastro) {
+        Usuario usuario = new Usuario("Ste", "999999999", Categoria.PROFESSOR);
+        return cadastro.getBanco().login(usuario);
     }
 }

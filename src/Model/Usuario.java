@@ -4,10 +4,12 @@ public class Usuario {
 
     private String login;
     private String senha;
+    private Categoria categoria;
 
-    public Usuario(String login, String senha){
-        setLogin(login);
-        setSenha(senha);
+    public Usuario(String login, String senha, Categoria categoria) {
+        this.login = login;
+        this.senha = senha;
+        this.categoria = categoria;
     }
 
     public String getLogin() {
@@ -26,15 +28,15 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public boolean ehIgual(String login, String senha) {
-        if(!this.login.equals(login)) {
-            return false;
-        }
+    public Categoria getCategoria() {
+        return categoria;
+    }
 
-        if(!this.senha.equals(senha)) {
-            return false;
-        }
+    public boolean ehIgual(String login, String senha, Categoria categoria) {
+        return this.login.equals(login) && this.senha.equals(senha) && this.categoria.equals(categoria);
+    }
 
-        return true;
+    public boolean ehIgual(Usuario usuario) {
+        return this.ehIgual(usuario.getLogin(), usuario.getSenha(), usuario.getCategoria());
     }
 }

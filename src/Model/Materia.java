@@ -7,9 +7,6 @@ public class Materia {
     String cursoquePertence;
     String dataCriação;
     int id;
-    //List<Pessoa> listAlunos;
-    //cargaHorairia >= 20h
-    //pk: id
 
     public Materia(String nome, int periodo, int cargaHoraria, String cursoquePertence, String dataCriacao){
         setNome(nome);

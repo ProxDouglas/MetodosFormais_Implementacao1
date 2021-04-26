@@ -7,6 +7,8 @@ public class teste {
 
         Service service = new Service();
         service.service(Categoria.ADMINISTRADOR);
+        service.service(Categoria.PROFESSOR);
+        service.service(Categoria.ALUNO);
     }
 
 }

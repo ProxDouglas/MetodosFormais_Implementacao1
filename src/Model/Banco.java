@@ -7,59 +7,49 @@ import java.util.List;
 
 public class Banco {
 
-    private static Integer chaveSequencialProfessor = 1;
-    private static Integer chaveSequencialAluno = 1;
-    private static Integer chaveSequencialMateria = 1;
+    private Integer chaveSequencialProfessor = 1;
+    private Integer chaveSequencialAluno = 1;
+    private Integer chaveSequencialMateria = 1;
 
     private Usuario admin;
-    private List<Professor> listaProfessores = new LinkedList<Professor>();
-    private List<Aluno> listaAlunos = new LinkedList<Aluno>();
-    private List<Materia> listMaterias = new ArrayList<Materia>();
+    private List<Professor> listaProfessores = new LinkedList<>();
+    private List<Aluno> listaAlunos = new LinkedList<>();
+    private List<Materia> listMaterias = new ArrayList<>();
     private List<Usuario> listLogin = new LinkedList<>();
 
-    public Banco(){
-        this.admin = new Usuario("admin", "admin");
+    public Banco() {
+        this.admin = new Usuario("admin", "admin", Categoria.ALUNO);
     }
 
-
-
-    public boolean loginAdmin(Usuario admin){
-        return admin.ehIgual(admin.getLogin(), admin.getSenha());
+    public boolean loginAdmin(Usuario admin) {
+        return admin.ehIgual(admin.getLogin(), admin.getSenha(), admin.getCategoria());
     }
 
     public void adicionaProfessor(Professor professor) {
-        professor.setId(Banco.chaveSequencialProfessor++);
+        professor.setId(chaveSequencialProfessor++);
         this.listaProfessores.add(professor);
         adicionarLoginProf(professor);
     }
 
     public void adicionaAluno(Aluno aluno) {
-        aluno.setId(Banco.chaveSequencialAluno++);
+        aluno.setId(chaveSequencialAluno++);
         this.listaAlunos.add(aluno);
         adicionarLoginAlu(aluno);
     }
 
     public void adicionaMateria(Materia materia) {
-        materia.setId(Banco.chaveSequencialMateria++);
+        materia.setId(chaveSequencialMateria++);
         this.listMaterias.add(materia);
-    }
-
-    public List<Professor> getListProfessor(){
-        return this.listaProfessores;
-    }
-
-    public List<Aluno> getListaAlunos(){
-        return this.listaAlunos;
     }
 
     public Professor buscaProfessorId(Integer id) {
         Professor professor = null;
         int i = 0;
-        while(listaProfessores.get(i).getId() != id){
+        while (listaProfessores.get(i).getId() != id) {
             i++;
         }
-        if(listaProfessores.get(i).getId() == id){
-            professor =  listaProfessores.get(i);
+        if (listaProfessores.get(i).getId() == id) {
+            professor = listaProfessores.get(i);
         }
         return professor;
     }
@@ -67,11 +57,11 @@ public class Banco {
     public Aluno buscaAlunoMatricula(String matricula) {
         Aluno aluno = null;
         int i = 0;
-        while(listaAlunos.get(i).getMatricula() != matricula){
+        while (listaAlunos.get(i).getMatricula() != matricula) {
             i++;
         }
-        if(listaAlunos.get(i).getMatricula() == matricula){
-            aluno =  listaAlunos.get(i);
+        if (listaAlunos.get(i).getMatricula() == matricula) {
+            aluno = listaAlunos.get(i);
         }
         return aluno;
     }
@@ -79,11 +69,11 @@ public class Banco {
     public Professor buscaProfessorNome(String nome) {
         Professor professor = null;
         int i = 0;
-        while(!listaProfessores.get(i).getNome().equals(nome)){
+        while (!listaProfessores.get(i).getNome().equals(nome)) {
             i++;
         }
-        if(listaProfessores.get(i).getNome().equals(nome)){
-           professor =  listaProfessores.get(i);
+        if (listaProfessores.get(i).getNome().equals(nome)) {
+            professor = listaProfessores.get(i);
         }
         return professor;
     }
@@ -91,36 +81,39 @@ public class Banco {
     public Aluno buscaAlunoNome(String nome) {
         Aluno aluno = null;
         int i = 0;
-        while(!listaAlunos.get(i).getNome().equals(nome)){
+        while (!listaAlunos.get(i).getNome().equals(nome)) {
             i++;
         }
-        if(listaAlunos.get(i).getNome().equals(nome)){
-            aluno =  listaAlunos.get(i);
+        if (listaAlunos.get(i).getNome().equals(nome)) {
+            aluno = listaAlunos.get(i);
         }
         return aluno;
     }
 
-    public Materia buscarMateriaNome(String nome){
+    public Materia buscarMateriaNome(String nome) {
         Materia materia = null;
         int i = 0;
-        while(!listMaterias.get(i).getNome().equals(nome)){
+        while (!listMaterias.get(i).getNome().equals(nome)) {
             i++;
         }
-        if(listaAlunos.get(i).getNome().equals(nome)){
-            materia =  listMaterias.get(i);
+        if (listaAlunos.get(i).getNome().equals(nome)) {
+            materia = listMaterias.get(i);
         }
         return materia;
     }
 
-    private void adicionarLoginProf(Professor professor){
-        Usuario usuario = new Usuario(Integer.toString(professor.getId()), professor.getDocumento());
+    private void adicionarLoginProf(Professor professor) {
+        Usuario usuario = new Usuario(professor.getNome(), professor.getDocumento(), Categoria.PROFESSOR);
         this.listLogin.add(usuario);
     }
 
-    private void adicionarLoginAlu(Aluno aluno){
-        Usuario usuario = new Usuario(Integer.toString(aluno.getId()), aluno.getDocumento());
+    private void adicionarLoginAlu(Aluno aluno) {
+        Usuario usuario = new Usuario(aluno.getNome(), aluno.getDocumento(), Categoria.ALUNO);
         this.listLogin.add(usuario);
     }
 
+    public boolean login(Usuario usuario) {
+        return listLogin.stream().anyMatch(usuario::ehIgual);
+    }
 }
 
